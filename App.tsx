@@ -53,7 +53,9 @@ export default function App() {
         );
       },
       (err) => Alert.alert("Error", err.message),
-      { enableHighAccuracy: true, timeout: 15000 }
+      { enableHighAccuracy: true,
+       timeout: 30000, 
+       }
     );
   } else if (result === RESULTS.DENIED) {
     Alert.alert("Permission Denied", "You denied location permission.");
@@ -125,9 +127,14 @@ export default function App() {
   // LOGIN & LOGOUT
   //---------------------------------------
   const handleLogin = () => {
-    if (username === USER && password === PASS) setLoggedIn(true);
-    else Alert.alert("Error", "Incorrect username or password");
-  };
+    if (username.toLowerCase() === USER.toLowerCase() && password === PASS) {
+    setLoggedIn(true);
+    }
+    else {
+    Alert.alert("Error", "Incorrect username or password");
+  }
+
+  }
 
   const handleLogout = () => {
     setLoggedIn(false);
